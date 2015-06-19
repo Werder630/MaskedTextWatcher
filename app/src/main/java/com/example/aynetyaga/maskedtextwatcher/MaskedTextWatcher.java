@@ -13,7 +13,7 @@ public final class MaskedTextWatcher implements TextWatcher {
     private final EditText mEditText;
     private final String mMask;
     private char charRepresentation = '*';
-    //Строка используемых декорирующих символов
+     //РЎС‚СЂРѕРєР° РёСЃРїРѕР»СЊР·СѓРµРјС‹С… РґРµРєРѕСЂРёСЂСѓСЋС‰РёС… СЃРёРјРІРѕР»РѕРІ
     private String notCharRepresentations = null;
     private boolean allow = true;
     private String previosValue;
@@ -27,7 +27,7 @@ public final class MaskedTextWatcher implements TextWatcher {
         notCharRepresentations = findNotCharRepresentation();
     }
 
-    //Получаем строку, состояющую из неповторящихся декорирущих символов например "+()-"
+    //РџРѕР»СѓС‡Р°РµРј СЃС‚СЂРѕРєСѓ, СЃРѕСЃС‚РѕСЏСЋС‰СѓСЋ РёР· РЅРµРїРѕРІС‚РѕСЂСЏС‰РёС…СЃСЏ РґРµРєРѕСЂРёСЂСѓС‰РёС… СЃРёРјРІРѕР»РѕРІ РЅР°РїСЂРёРјРµСЂ "+()-"
     String findNotCharRepresentation() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < mMask.length(); i++) {
@@ -65,7 +65,7 @@ public final class MaskedTextWatcher implements TextWatcher {
         }
     }
 
-    //вставка данных в поле с учетом декорирующих символов
+    //РІСЃС‚Р°РІРєР° РґР°РЅРЅС‹С… РІ РїРѕР»Рµ СЃ СѓС‡РµС‚РѕРј РґРµРєРѕСЂРёСЂСѓСЋС‰РёС… СЃРёРјРІРѕР»РѕРІ
     private void insertStringWithDecorate(String s) {
         StringBuilder temp = new StringBuilder();
 
@@ -84,7 +84,7 @@ public final class MaskedTextWatcher implements TextWatcher {
         mEditText.setTextKeepState(temp.toString());
     }
 
-    //Получаем введенную строку без декорирующих символов, например "79001234567"
+    //РџРѕР»СѓС‡Р°РµРј РІРІРµРґРµРЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ Р±РµР· РґРµРєРѕСЂРёСЂСѓСЋС‰РёС… СЃРёРјРІРѕР»РѕРІ, РЅР°РїСЂРёРјРµСЂ "79001234567"
     private String getStringWithoutDecorateChar() {
         if (mEditText.length() > mMask.length()) return previosValue;
         StringBuilder sb = new StringBuilder();
