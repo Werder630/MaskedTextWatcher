@@ -17,7 +17,7 @@ public final class MaskedTextWatcher implements TextWatcher {
     private String notCharRepresentations = null;
     private boolean allow = true;
     private String previosValue;
-    private boolean pushToBack = false;
+    private boolean pushToEnd = false;
     private boolean decorateCharAfterType = false;
 
     public MaskedTextWatcher(EditText editText, String mask) {
@@ -51,14 +51,14 @@ public final class MaskedTextWatcher implements TextWatcher {
     @Override
     public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
         if (allow) {
-            pushToBack = (mEditText.length() == mEditText.getSelectionEnd());
-            if (after == 0) pushToBack = false;
+            pushToEnd = (mEditText.length() == mEditText.getSelectionEnd());
+            if (after == 0) pushToEnd = false;
         }
     }
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if (pushToBack) {
+        if (pushToEnd) {
             mEditText.setSelection(mEditText.length());
         } else if (decorateCharAfterType) {
             mEditText.setSelection(mEditText.getSelectionStart() + 1);
